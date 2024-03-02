@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+public class SumaConManejoDeExcepciones {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        try {
+           
+            int resultado = sumarValores(scanner);
+            System.out.println("La suma de los valores es: " + resultado);
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Debes ingresar valores numéricos.");
+        } catch (Exception e) {
+            System.out.println("Error: Ha ocurrido un problema durante la ejecución.");
+        } finally {
+            
+            scanner.close();
+        }
+    }
+
+    
+    public static int sumarValores(Scanner scanner) throws Exception {
+        System.out.print("Ingrese el primer valor: ");
+        String valor1Str = scanner.nextLine();
+        if (valor1Str.isBlank()) {
+            throw new Exception("El primer valor no puede estar en blanco.");
+        }
+        int valor1 = Integer.parseInt(valor1Str);
+
+        System.out.print("Ingrese el segundo valor: ");
+        String valor2Str = scanner.nextLine();
+        if (valor2Str.isBlank()) {
+            throw new Exception("El segundo valor no puede estar en blanco.");
+        }
+        int valor2 = Integer.parseInt(valor2Str);
+
+        return valor1 + valor2;
+    }
+}

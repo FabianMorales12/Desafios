@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class IngresosUsuario {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Ingresa tu nombre: ");
+        String nombreUsuario = scanner.nextLine();
+
+        double ingresoTotal = calcularIngresoTotal(scanner, nombreUsuario);
+        double ingresoPromedio = ingresoTotal / 3;
+
+        System.out.println("Hola " + nombreUsuario + ", en total ganaste " + ingresoTotal +
+                           " y promediaste " + ingresoPromedio);
+    }
+
+    public static double calcularIngresoTotal(Scanner scanner, String nombreUsuario) {
+        double ingresoTotal = 0;
+        for (int i = 1; i <= 3; i++) {
+            System.out.print("Ingresa tus ingresos del mes " + i + ": ");
+            double ingresoMes = scanner.nextDouble();
+            ingresoTotal += ingresoMes;
+        }
+        return ingresoTotal;
+    }
+}
